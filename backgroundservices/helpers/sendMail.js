@@ -18,6 +18,15 @@ let configurations = {
     }
 }
 
-const sendMail = async() =>{
-    
+const sendMail = async (messageOptions) => {
+    const transporter = await createTransporter(configurations)
+    await transporter.verify();
+    await transporter.sendMail(messageOptions, (error, info) => {
+        if (error) {
+            console.log(error)
+        }
+        console.log(info.response);
+    })
 }
+
+module.exports = sendMail;  
