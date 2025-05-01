@@ -31,21 +31,16 @@ router.get("/", async (req, res) => {
 // Update An Expense
 router.put("/:id", async (req, res) => {
     try {
-        const expense = await Expense.findByIdAndUpdate(
-            req.params.id,
-            {
-                $set: req.body,
-            },
-            { new: true }
-        );
-
-        res.status(201).json(expense)
+      const expense = await Expense.findByIdAndUpdate(
+        req.params.id,
+        { $set: req.body },
+        { new: true }
+      );
+      res.status(201).json(expense);
+    } catch (error) {
+      res.status(500).json(error);
     }
-    catch (error) {
-        res.status(500).json(error)
-    }
-
-})
+  });
 
 // Delete an Expense
 

@@ -13,8 +13,8 @@ const ExpenseSchema = mongoose.Schema({
     date: {
         type: String,
         require: true,
-    }
-
+    },
+   
 })
 
 module.exports = mongoose.model("Expense", ExpenseSchema)
